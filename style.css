@@ -366,10 +366,9 @@ body {
   overflow: hidden;
 }
 
-/* Parte frontal más llamativa */
+/* Parte frontal */
 .fundador .frontal {
- background: linear-gradient(rgba(212,122,122,0.7), rgba(225, 166, 126, 0.525));
-
+  background: linear-gradient(135deg, rgba(212,122,122,0.7), rgba(225,166,126,0.6));
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -391,7 +390,7 @@ body {
 
 /* Parte trasera con imagen y texto */
 .fundador .trasera {
-  background: #f7fafb;
+  background: #fff;
   transform: rotateY(180deg);
   flex-direction: column;
   justify-content: flex-start;
@@ -413,11 +412,12 @@ body {
   line-height: 1.4;
 }
 
-.fundador:hover .frontal {
+/* El efecto se activa con la clase .activo */
+.fundador.activo .frontal {
   transform: rotateY(180deg);
 }
 
-.fundador:hover .trasera {
+.fundador.activo .trasera {
   transform: rotateY(360deg);
 }
 
@@ -461,7 +461,7 @@ body {
   box-shadow: 0 6px 15px rgba(0,0,0,0.08);
 }
 
-/* Parte frontal colorida */
+/* Parte frontal */
 .integrante .frontal {
   background: linear-gradient(135deg, #c2948a, #f3dad8);
   color: #0d2e3d;
@@ -472,7 +472,7 @@ body {
   padding: 1rem;
 }
 
-/* Parte trasera con foto y descripción */
+/* Parte trasera */
 .integrante .trasera {
   background: #fff;
   transform: rotateY(180deg);
@@ -496,11 +496,12 @@ body {
   line-height: 1.3;
 }
 
-.integrante:hover .frontal {
+/* Animación con clase activa */
+.integrante.activo .frontal {
   transform: rotateY(180deg);
 }
 
-.integrante:hover .trasera {
+.integrante.activo .trasera {
   transform: rotateY(360deg);
 }
 /* ====== PROGRAMAS ====== */
@@ -509,6 +510,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   justify-items: center;
+  margin-top: 2rem;
 }
 
 .program-card {
@@ -519,10 +521,11 @@ body {
   perspective: 1000px;
   border-radius: 20px;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.program-front,
-.program-back {
+.program-card .program-front,
+.program-card .program-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -534,8 +537,10 @@ body {
   justify-content: center;
   text-align: center;
   padding: 1.2rem;
+  overflow: hidden;
 }
 
+/* Cara frontal: imagen + texto */
 .program-front {
   background-size: cover;
   background-position: center;
@@ -547,8 +552,9 @@ body {
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
+/* Cara trasera */
 .program-back {
-  background: #f5f8fa;
+  background: #ffffff;
   color: #333;
   transform: rotateY(180deg);
   font-size: 0.95rem;
@@ -556,10 +562,65 @@ body {
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
-.program-card:hover .program-front {
+/* Activación con clase .activo (no hover) */
+.program-card.activo .program-front {
   transform: rotateY(180deg);
 }
 
-.program-card:hover .program-back {
+.program-card.activo .program-back {
   transform: rotateY(360deg);
+}
+/* ====== TRANSPARENCIA ====== */
+.transparencia h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.transparencia .intro-text {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #444;
+}
+
+.document-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.document-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.document-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.document-card h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.document-card .btn {
+  background: #0077cc;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.document-card .btn:hover {
+  background: #005fa3;
 }
